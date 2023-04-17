@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!--  Form view for Service Department  -->
+    <record model='ir.ui.view' id='fleet_daily_works_log_action'>
+        <field name="name">fleet.daily.works.log.action</field>
+        <field name="model">fleet.daily.works.log</field>
+        <field name="arch" type="xml">
+            <tree string="Daily Works">  <!--editable="top" -->
+                <field name="vehicle_id" />
+                <field name="driver_id" />
+                <field name="base_revenue"/>
+                <field name="qty_dispatched" />
+                <field name='qty_returned' />
+                <field name="total_expected" />
+                <field name='total_income' />
+                <field name='total_daily_work' />
+                <field name="date_start" />
+                <field name='date_end' />
+                <field name='description' />
+            </tree>
+
+        </field>
+    </record>
+
+
+    <record model='ir.ui.view' id='fleet_daily_works_log_form'>
+        <field name="name">fleet.daily.works.log.form</field>
+        <field name="model">fleet.daily.works.log</field>
+        <field name="arch" type="xml">
+
+            <form string="">
+                <sheet>
+      <group>
+                    <field name="vehicle_id"/>
+                    <field name="driver_id"/>
+                    <field name="base_revenue"/>
+                    <field name='total_daily_work' />
+                </group>
+
+                <group >
+                    <field name="qty_dispatched" />
+                    <field name='qty_returned' />
+                    <field name="total_expected" />
+                    <field name='total_income' />
+                </group>
+
+                 <group >
+                    <field name="date_start" />
+                    <field name='date_end' />
+                    <field name='description' />
+                </group>
+                </sheet>
+            </form>
+
+        </field>
+    </record>
+
+    <record id="fleet_daily_worksmenu_action" model="ir.actions.act_window">
+        <field name="name">DailyWorks</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">fleet.daily.works.log</field>
+        <field name="view_mode">form,tree</field>
+        <field name="view_id" ref="fleet_daily_works_log_action"/>
+    </record>
+    <!--  Menuitem for Service Department  -->
+    <menuitem action="fleet_daily_worksmenu_action"
+        parent="fleet.fleet_vehicles" groups="fleet.fleet_group_manager"
+        id="fleet_daily_works_menu" sequence="8" />
+    
+
+</odoo>
